@@ -17,6 +17,7 @@ export class ActivitiesListPage implements OnInit {
   query = '';
   activities: EventItem[] = [];
   type: string | null = null;
+  segmentValue = 'all';
 
   constructor(private svc: EventService, private route: ActivatedRoute) {}
 
@@ -29,5 +30,10 @@ export class ActivitiesListPage implements OnInit {
     } else {
       this.activities = all;
     }
+  }
+
+  onSegmentChange(ev: any) {
+    // Placeholder: could filter by segment value if needed
+    console.log('Segment changed:', this.segmentValue);
   }
 }

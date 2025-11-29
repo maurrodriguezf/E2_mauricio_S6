@@ -22,7 +22,7 @@ import { Router } from '@angular/router';
   ]
 })
 export class ItemListComponent {
-  @Input() items: Array<{ title: string; note?: string }> = [];
+  @Input() items: Array<{ id?: string; title: string; note?: string }> = [];
   @Input() basePath = 'events';
 
   constructor(private router: Router) {}

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Storage } from '@ionic/storage-angular';
 import { catchError, map } from 'rxjs/operators';
 import { of } from 'rxjs';
 
@@ -16,20 +17,28 @@ export interface EventItem {
 export class EventService {
   private storageKey = 'miapp_events_v1';
   private events: EventItem[] = [];
+  private storageReady = false;
 
-  constructor(private http: HttpClient) {
-    const raw = localStorage.getItem(this.storageKey);
-    if (raw) {
+  constructor(private http: HttpClient, private storage: Storage) {
+    this.initStorage();
+  }
+
+  async initStorage() {
+    await this.storage.create();
+    this.storageReady = true;
+    const stored = await this.storage.get(this.storageKey);
+    if (stored) {
       try {
-        this.events = JSON.parse(raw) as EventItem[];
+        this.events = JSON.parse(stored) as EventItem[];
       } catch {
         this.seed();
+        await this.save();
       }
     } else {
       this.seed();
+      await this.save();
     }
-
-    // try to sync with remote API (best-effort). Uses JSONPlaceholder posts as sample data.
+    // try to sync with remote API (best-effort)
     this.syncFromApi();
   }
 
@@ -43,7 +52,7 @@ export class EventService {
   }
 
   private save() {
-    localStorage.setItem(this.storageKey, JSON.stringify(this.events));
+    return this.storage.set(this.storageKey, JSON.stringify(this.events));
   }
 
   list() {
@@ -89,5 +98,6 @@ export class EventService {
   // helper to reset seed (useful for tests)
   resetToSeed() {
     this.seed();
+    this.save();
   }
 }

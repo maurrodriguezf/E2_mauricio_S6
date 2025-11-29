@@ -11,7 +11,7 @@
   <ion-searchbar [(ngModel)]="query" placeholder="Buscar"></ion-searchbar>
 
   <section>
-    <ion-segment value="all" (ionChange)="(ev) => { /* placeholder for UI */ }">
+    <ion-segment [(ngModel)]="segmentValue" (ionChange)="onSegmentChange($event)">
       <ion-segment-button value="all">
         <ion-label>Todos</ion-label>
       </ion-segment-button>

@@ -14,6 +14,7 @@ const routes: Routes = [
   { path: 'activities/detail/:id', loadComponent: () => import('./pages/event-detail/event-detail.page').then(m => m.EventDetailPage), canActivate: [AuthGuard] },
   { path: 'reservation', loadComponent: () => import('./pages/reservation/reservation.page').then(m => m.ReservationPage), canActivate: [AuthGuard] },
   { path: 'profile', loadComponent: () => import('./pages/profile/profile.page').then(m => m.ProfilePage), canActivate: [AuthGuard] },
+  { path: 'camera', loadComponent: () => import('./pages/camera/camera.page').then(m => m.CameraPage), canActivate: [AuthGuard] },
   // legacy / demo route
   { path: 'home', loadChildren: () => import('./home/home.module').then(m => m.HomePageModule) },
   { path: 'nombre-de-la-pagina', loadChildren: () => import('./nombre-de-la-pagina/nombre-de-la-pagina.module').then(m => m.NombreDeLaPaginaPageModule) }
