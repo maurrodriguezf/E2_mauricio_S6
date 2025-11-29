@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Galería de fotos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button>
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side="top">
+      <ion-fab-button (click)="takePicture()" color="primary" [disabled]="loading">
+        <ion-icon name="camera"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button (click)="pickFromGallery()" color="secondary" [disabled]="loading">
+        <ion-icon name="images"></ion-icon>
+      </ion-fab-button>
+    </ion-fab-list>
+  </ion-fab>
+
+  <ion-list>
+    <ion-item *ngFor="let photo of photos" button>
+      <ion-img [src]="photo.dataUrl" style="max-height: 100px; max-width: 100px;"></ion-img>
+      <ion-label>
+        <h3>{{ photo.name }}</h3>
+        <p>{{ (photo.timestamp | date: 'short') }}</p>
+      </ion-label>
+      <ion-button fill="clear" color="danger" (click)="deletePhoto(photo.name); $event.stopPropagation()">
+        <ion-icon name="trash"></ion-icon>
+      </ion-button>
+    </ion-item>
+  </ion-list>
+
+  <div *ngIf="photos.length === 0" style="padding: 20px; text-align: center; color: #999;">
+    <p>No hay fotos aún. Toma una foto o elige una de la galería.</p>
+  </div>
+</ion-content>
