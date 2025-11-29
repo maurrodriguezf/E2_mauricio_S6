@@ -1,0 +1,16 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Actividades<span *ngIf="type">: {{ type }}</span></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-searchbar [(ngModel)]="query" placeholder="Buscar"></ion-searchbar>
+
+  <section>
+    <app-item-list [items]="activities"></app-item-list>
+  </section>
+</ion-content>
