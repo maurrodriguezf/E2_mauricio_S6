@@ -11,6 +11,7 @@ const routes: Routes = [
   { path: 'events/:id', loadComponent: () => import('./pages/event-detail/event-detail.page').then(m => m.EventDetailPage), canActivate: [AuthGuard] },
   { path: 'activities', loadComponent: () => import('./pages/activities-list/activities-list.page').then(m => m.ActivitiesListPage), canActivate: [AuthGuard] },
   { path: 'activities/:type', loadComponent: () => import('./pages/activities-list/activities-list.page').then(m => m.ActivitiesListPage), canActivate: [AuthGuard] },
+  { path: 'activities/detail/:id', loadComponent: () => import('./pages/event-detail/event-detail.page').then(m => m.EventDetailPage), canActivate: [AuthGuard] },
   { path: 'reservation', loadComponent: () => import('./pages/reservation/reservation.page').then(m => m.ReservationPage), canActivate: [AuthGuard] },
   { path: 'profile', loadComponent: () => import('./pages/profile/profile.page').then(m => m.ProfilePage), canActivate: [AuthGuard] },
   // legacy / demo route

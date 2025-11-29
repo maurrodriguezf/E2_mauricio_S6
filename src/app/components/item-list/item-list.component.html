@@ -1,0 +1,9 @@
+<ion-list [@listAnimation]>
+  <ion-item *ngFor="let it of items">
+    <ion-label>
+      <h2>{{ it.title }}</h2>
+      <p *ngIf="it.note">{{ it.note }}</p>
+    </ion-label>
+    <ion-button *ngIf="it.id" fill="clear" slot="end" color="primary" (click)="goTo(it)">Ver</ion-button>
+  </ion-item>
+</ion-list>

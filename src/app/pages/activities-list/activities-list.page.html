@@ -11,6 +11,15 @@
   <ion-searchbar [(ngModel)]="query" placeholder="Buscar"></ion-searchbar>
 
   <section>
-    <app-item-list [items]="activities"></app-item-list>
+    <ion-segment value="all" (ionChange)="(ev) => { /* placeholder for UI */ }">
+      <ion-segment-button value="all">
+        <ion-label>Todos</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="nearby">
+        <ion-label>Cerca</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+
+    <app-item-list [items]="activities" basePath="activities/detail"></app-item-list>
   </section>
 </ion-content>
