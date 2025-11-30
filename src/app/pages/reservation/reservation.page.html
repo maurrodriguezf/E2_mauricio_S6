@@ -1,0 +1,24 @@
+<ion-header translucent>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Reservar</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <mat-form-field appearance="fill" style="width:100%">
+      <mat-label>Nombre</mat-label>
+      <input matInput formControlName="name">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" style="width:100%">
+      <mat-label>Participantes</mat-label>
+      <input matInput type="number" formControlName="qty">
+    </mat-form-field>
+
+    <ion-button expand="block" type="submit" color="primary">Confirmar reserva</ion-button>
+  </form>
+</ion-content>

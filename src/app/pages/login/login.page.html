@@ -1,0 +1,32 @@
+<ion-header translucent>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>SportConnect — Login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding" @fadeIn>
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <mat-form-field appearance="fill" style="width:100%">
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email" placeholder="usuario@correo.com">
+      <mat-error *ngIf="form.get('email')?.hasError('required')">Requerido</mat-error>
+      <mat-error *ngIf="form.get('email')?.hasError('email')">Email inválido</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" style="width:100%">
+      <mat-label>Contraseña</mat-label>
+      <input matInput type="password" formControlName="password" placeholder="mínimo 6 caracteres">
+      <mat-error *ngIf="form.get('password')?.hasError('required')">Requerido</mat-error>
+      <mat-error *ngIf="form.get('password')?.hasError('minlength')">Min 6 caracteres</mat-error>
+    </mat-form-field>
+
+    <ion-button expand="block" type="submit" color="primary">Entrar</ion-button>
+  </form>
+
+  <div class="note">
+    <p>¿No tienes cuenta? <a routerLink="/register">Registrarse (demo)</a></p>
+  </div>
+</ion-content>

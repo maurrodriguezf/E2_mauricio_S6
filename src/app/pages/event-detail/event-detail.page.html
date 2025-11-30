@@ -1,0 +1,16 @@
+<ion-header translucent>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+      <ion-back-button defaultHref="/events"></ion-back-button>
+    </ion-buttons>
+  <ion-title>{{ event?.title }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding" [@slideIn]>
+  <h2>{{ event?.title }}</h2>
+  <p>{{ event?.description }}</p>
+
+  <ion-button expand="block" color="secondary" (click)="reserve()">Reservar</ion-button>
+</ion-content>

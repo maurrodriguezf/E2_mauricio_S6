@@ -1,0 +1,19 @@
+<ion-header translucent>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Inicio</ion-title>
+    <ion-buttons slot="end">
+      <ion-button routerLink="/profile">Perfil</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding" [@enter]>
+  <h2>Eventos destacados</h2>
+  <app-card-gallery></app-card-gallery>
+
+  <h3 class="mt">Próximas</h3>
+  <app-item-list [items]="highlights"></app-item-list>
+</ion-content>
