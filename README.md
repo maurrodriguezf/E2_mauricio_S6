@@ -149,23 +149,7 @@ Ver [backend/README.md](backend/README.md) para detalles completos de la API
 - ✅ Sanitización de inputs
 - ✅ Error handling sin exponer detalles
 
-**⚠️ PImplementar refresh tokens para sesiones extendidas
-- [ ] Agregar verificación de email (SendGrid/Mailgun)
-- [ ] Sistema de recuperación de contraseña
-- [ ] Migrar a PostgreSQL en producción
-- [ ] Implementar rate limiting anti-bruteforce
-- [ ] Agregar OAuth (Google/Facebook login)
-- [ ] Notificaciones push con Firebase
-- [ ] Sincronización offline avanzada
-- [ ] Internacionalización (i18n)
-- [ ] Dark mode
-- [ ] Tests E2E para API REST
-- [ ] CI/CD con GitHub Actions
-- [ ] Docker containerization
-- [ ] 2FA (Two-Factor Authentication)
-- [ ] Database migration (PostgreSQL/MySQL)
-- [ ] Logging estructurado (Winston/Pino)
-- [ ] Monitoring (Sentry/DataDog)GRATION.md) para detalles completos.
+
 
 ## 🧪 Pruebas
 
@@ -200,15 +184,7 @@ Ver [TESTING.md](TESTING.md) para guía completa de pruebas.
 - Implementar backend API REST
 - Validación server-side
 - HTTPS en todas las comunicaciones
-
-## 🎯 Próximas Mejoras
-
-- [ ] Migrar EventService a SQLite
-- [ ] Implementar sincronización offline
-- [ ] Hash de contraseñas con bcrypt
-- [ ] Backend API REST
-- [ ] Notificaciones push
-- [ ] Soporte para múltiples idiomas
+as
 
 ## 📝 Commits
 
