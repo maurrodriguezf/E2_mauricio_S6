@@ -1,39 +1,224 @@
 # Entrega: Proyecto Ionic
 
-Instrucciones para entrega y desarrollo rápido.
+Proyecto Ionic con Angular que incluye autenticación, gestión de eventos, y base de datos SQLite.
 
-- **Repositorio**: Añadir la URL del repositorio git en la presentación o en este README antes de entregar.
-- **Commits**: Hacer commits frecuentes y descriptivos (ej.: "crea página de home", "integración API", "persistencia SQLite").
+## 🚀 Características Implementadas
 
-## ¿Qué hice aquí?
-- Añadí `.gitignore` para excluir `node_modules`, `www`, `e2e` y otros archivos generados.
+- ✅ **Backend API REST**: Node.js + Express con endpoints completos
+- ✅ **Hash de contraseñas**: bcrypt con 10 salt rounds
+- ✅ **Autenticación JWT**: Tokens seguros con expiración configurable
+- ✅ **Validación server-side**: express-validator en todos los endpoints
+- ✅ **Base de datos SQLite**: Persistencia en backend
+- ✅ **Pruebas Unitarias**: 78 pruebas con Jasmine/Karma
+- ✅ **Pruebas E2E**: Suite completa con Cypress
+- ✅ **CORS configurado**: Soporte para Ionic/Capacitor
+- ✅ **Arquitectura REST**: Separación frontend/backend
 
-## Persistencia y sincronización (guía rápida)
+## � Quick Start
 
-El proyecto usa `localStorage` para persistencia por defecto y el servicio `EventService` intenta sincronizar datos con un API público (ejemplo: JSONPlaceholder) en modo "best-effort".
+```bash
+# 1. Instalar dependencias
+npm install
+npm run backend:install
 
-Si quieres integrar `Ionic Storage` o `@capacitor-community/sqlite` para cumplir con la entrega (offline/SQLite):
+# 2. Iniciar backend (Terminal 1)
+npm run backend:dev
 
-- Instalar `@ionic/storage-angular` y `@ionic/storage` (o `@capacitor-community/sqlite` para SQLite más avanzado):
+# 3. Iniciar frontend (Terminal 2)
+npm start
+```
 
-```powershell
-npm install @ionic/storage-angular @ionic/storage
-# o para SQLite
-npm install @capacitor-community/sqlite
+Navega a http://localhost:8100
+
+Ver [QUICK_START.md](QUICK_START.md) para guía detallada.
+
+## �📦 Instalación
+
+```bash
+# Clonar repositorio
+git clone [URL_DEL_REPOSITORIO]
+
+# Instalar dependencias
+npm install
+
+# Sincronizar con Capacitor
 npx cap sync
 ```
 
-- Inicializar `IonicStorageModule` en `AppModule` y usar su API en lugar de `localStorage`.
-- En `EventService`, cambiar `localStorage.getItem/setItem` por llamadas asíncronas a `Storage`.
+## 🏃 Comandos Disponibles
+Frontend (Ionic serve)
+npm run backend:dev       # Backend con nodemon
+npm run build            # Compilar producción
+```
 
-Se puede añadir sincronización más avanzada (merge, timestamps, resolución de conflictos) una vez tengas el backend.
+### Pruebas
+```bash
+npm test                 # Pruebas unitarias (watch mode)
+npm run test:headless    # Pruebas unitarias (una vez)
+npm run e2e              # Pruebas E2E con Cypress
+npm run cypress:open     # Cypress modo interactivo
+```
 
-## Pasos sugeridos para el profesor
-1. Clonar el repositorio.
-2. Ejecutar `npm install`.
-3. Ejecutar `ionic serve` o `npm start`.
+### Backend
+```bash
+npm run backend          # Iniciar backend producción
+npm run backend:dev      # Backend desarrollo (auto-reload)
+npm run backend:install  # Instalar deps del backend mode)
+npm run test:headless    # Pruebas unitarias (una vez)
+npm run e2e              # Pruebas E2E con Cypress
+npm run cypress:open     # Cypress modo interactivo
+```
 
-## Siguientes mejoras planificadas
-- Mejorar la pantalla `Home` con tarjetas y botones.
-- Añadir páginas: `Listado`, `Detalle`, `Perfil`.
-- Integrar persistencia local (SQLite / Ionic Storage) y sincronización con API REST.
+### Plataformas Móviles
+```bash
+npx cap add android      # Agregar Android
+npx cap add ios          # Agregar iOS
+npx cap sync            # Sincronizar plugins
+npx cap open android    # Abrir Android Studio
+npx cap open ios        # Abrir Xcode
+```
+
+## 📁 Estructura del Proyecto
+
+```
+src/
+├── assets/            # Recursos estáticos
+└── environments/      # Configuración por entorno
+
+backend/
+├── server.js          # Servidor Express principal
+├── Backend SQLite (Server-side)
+- **Ubicación**: `backend/database.sqlite`
+- **Tablas**: users, events
+- **Características**: 
+  - Contraseñas hasheadas con bcrypt
+  - Relaciones con foreign keys
+  - Índices para performance
+  - Transacciones automáticas
+
+### Schema
+```sql
+-- Usuarios con contraseñas hasheadas
+CREATE TABLE users (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  username TEXT UNIQUE NOT NULL,
+  email TEXT UNIQUE NOT NULL,
+  password TEXT NOT NULL,  -- bcrypt hash
+  created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Eventos asociados a usuarios
+CREATE TABLE events (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  user_id INTEGER NOT NULL,
+  title TEXT NOT NULL,
+  description TEXT,
+  date TEXT NOT NULL,
+  location TEXT,
+  FOREIGN KEY (user_id) REFERENCES users(id)
+);
+```QUICK_START.md](QUICK_START.md) - Guía rápida de inicio (¡Empieza aquí!)
+- [backend/README.md](backend/README.md) - Documentación completa de la API REST
+- [API_REST_IMPLEMENTATION.md](API_REST_IMPLEMENTATION.md) - Detalles de implementación JWT/bcrypt
+- [TESTING.md](TESTING.md) - Guía completa de pruebas
+- [SQLITE_MIGRATION.md](SQLITE_MIGRATION.md) - Documentación de SQLite (legacy)
+Ver [backend/README.md](backend/README.md) para detalles completos de la API
+### Frontend
+- **Framework**: Ionic 8 + Angular 20
+- **UI**: Angular Material + Ionic Components
+- **HTTP**: HttpClient con interceptores
+- **Pruebas**: Jasmine + Karma + Cypress
+- **State**: Services + RxJS
+
+### Backend
+- **Runtime**: Node.js
+- **Framework**: Express 4.18
+- **Base de Datos**: SQLite3
+- **Autenticación**: JWT (jsonwebtoken)
+- **Seguridad**: bcrypt, express-validator, CORS
+- **Desarrollo**: nodemon (auto-reload)
+- **Android/iOS**: Base de datos SQLite nativa
+- **Tablas**: users, events
+- **Características**: Transacciones, índices, persistencia
+✅ IMPLEMENTADO** en este proyecto:
+- ✅ Hash de contraseñas con bcrypt (10 salt rounds)
+- ✅ JWT tokens con expiración (24h configurable)
+- ✅ Validación server-side (express-validator)
+- ✅ CORS configurado correctamente
+- ✅ SQL Injection protection (prepared statements)
+- ✅ Sanitización de inputs
+- ✅ Error handling sin exponer detalles
+
+**⚠️ PImplementar refresh tokens para sesiones extendidas
+- [ ] Agregar verificación de email (SendGrid/Mailgun)
+- [ ] Sistema de recuperación de contraseña
+- [ ] Migrar a PostgreSQL en producción
+- [ ] Implementar rate limiting anti-bruteforce
+- [ ] Agregar OAuth (Google/Facebook login)
+- [ ] Notificaciones push con Firebase
+- [ ] Sincronización offline avanzada
+- [ ] Internacionalización (i18n)
+- [ ] Dark mode
+- [ ] Tests E2E para API REST
+- [ ] CI/CD con GitHub Actions
+- [ ] Docker containerization
+- [ ] 2FA (Two-Factor Authentication)
+- [ ] Database migration (PostgreSQL/MySQL)
+- [ ] Logging estructurado (Winston/Pino)
+- [ ] Monitoring (Sentry/DataDog)GRATION.md) para detalles completos.
+
+## 🧪 Pruebas
+
+### Cobertura de Pruebas
+
+- **78 pruebas unitarias** pasando
+- **5 suites E2E** configuradas
+- Cobertura de: Servicios, Componentes, Guards
+
+Ver [TESTING.md](TESTING.md) para guía completa de pruebas.
+
+## 📚 Documentación
+
+- [TESTING.md](TESTING.md) - Guía completa de pruebas
+- [SQLITE_MIGRATION.md](SQLITE_MIGRATION.md) - Migración a SQLite
+- [DELIVERY.md](DELIVERY.md) - Instrucciones de entrega
+
+## 🔧 Tecnologías
+
+- **Framework**: Ionic 8 + Angular 20
+- **UI**: Angular Material + Ionic Components
+- **Base de Datos**: SQLite (Capacitor Community)
+- **Pruebas**: Jasmine + Karma + Cypress
+- **State Management**: Services + localStorage/SQLite
+- **Animaciones**: Angular Animations
+
+## ⚠️ Notas de Seguridad
+
+**IMPORTANTE**: Esta implementación es educativa. En producción:
+- Hashear contraseñas (bcrypt/argon2)
+- Usar JWT para sesiones
+- Implementar backend API REST
+- Validación server-side
+- HTTPS en todas las comunicaciones
+
+## 🎯 Próximas Mejoras
+
+- [ ] Migrar EventService a SQLite
+- [ ] Implementar sincronización offline
+- [ ] Hash de contraseñas con bcrypt
+- [ ] Backend API REST
+- [ ] Notificaciones push
+- [ ] Soporte para múltiples idiomas
+
+## 📝 Commits
+
+Este proyecto usa commits descriptivos:
+- `feat:` Nuevas características
+- `fix:` Correcciones
+- `test:` Pruebas
+- `docs:` Documentación
+- `refactor:` Refactorización
+
+## 👥 Autor
+
+Mauricio Rodríguez - Evaluación 2 Semestre 8

@@ -1,0 +1,18 @@
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <ion-item>
+    <ion-label position="stacked">Título</ion-label>
+    <ion-input formControlName="title" type="text" placeholder="Introduce un título"></ion-input>
+  </ion-item>
+  <ion-note color="danger" *ngIf="form.get('title')?.touched && form.get('title')?.invalid">
+    El título es obligatorio y debe tener al menos 3 caracteres.
+  </ion-note>
+
+  <ion-item>
+    <ion-label position="stacked">Notas (opcional)</ion-label>
+    <ion-textarea formControlName="note" rows="3"></ion-textarea>
+  </ion-item>
+
+  <ion-button expand="full" type="submit" [disabled]="form.invalid" [@buttonPulse]>
+    Añadir tarea
+  </ion-button>
+</form>

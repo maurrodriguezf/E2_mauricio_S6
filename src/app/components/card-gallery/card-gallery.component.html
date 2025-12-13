@@ -1,0 +1,12 @@
+<ion-grid>
+  <ion-row>
+    <ion-col size="12" size-md="4" *ngFor="let c of cards">
+      <ion-card [@cardFade]>
+        <ion-card-header>
+          <ion-card-title>{{ c.title }}</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>{{ c.content }}</ion-card-content>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+</ion-grid>

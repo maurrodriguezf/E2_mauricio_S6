@@ -1,0 +1,17 @@
+// For information on how to create your own theme, please see:
+// http://ionicframework.com/docs/theming/
+
+:root {
+	/* Ionic colors to better match Angular Material indigo-pink */
+	--ion-color-primary: #3f51b5; /* indigo 500 */
+	--ion-color-primary-rgb: 63,81,181;
+	--ion-color-primary-contrast: #ffffff;
+	--ion-color-secondary: #e91e63; /* pink */
+	--ion-color-secondary-contrast: #ffffff;
+	--ion-color-tertiary: #03a9f4;
+	--ion-background-color: #fafafa;
+}
+
+ion-app, ion-content {
+	background: var(--ion-background-color);
+}

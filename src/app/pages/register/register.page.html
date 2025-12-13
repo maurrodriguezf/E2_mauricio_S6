@@ -10,10 +10,10 @@
 <ion-content class="ion-padding">
   <form [formGroup]="form" (ngSubmit)="submit()">
     <mat-form-field appearance="fill" style="width:100%">
-      <mat-label>Nombre</mat-label>
-      <input matInput formControlName="name" placeholder="Tu nombre" />
-      <mat-error *ngIf="form.get('name')?.hasError('required')">Requerido</mat-error>
-      <mat-error *ngIf="form.get('name')?.hasError('minlength')">Min 2 caracteres</mat-error>
+      <mat-label>Nombre de usuario</mat-label>
+      <input matInput formControlName="username" placeholder="usuario123" />
+      <mat-error *ngIf="form.get('username')?.hasError('required')">Requerido</mat-error>
+      <mat-error *ngIf="form.get('username')?.hasError('minlength')">Min 3 caracteres</mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="fill" style="width:100%">
