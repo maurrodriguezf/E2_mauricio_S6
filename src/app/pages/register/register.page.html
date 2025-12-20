@@ -1,48 +1,88 @@
 <ion-header translucent>
-  <ion-toolbar>
+  <ion-toolbar color="primary">
     <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
+      <ion-button routerLink="/login">
+        <ion-icon name="arrow-back"></ion-icon>
+      </ion-button>
     </ion-buttons>
-    <ion-title>Registrarse</ion-title>
+    <ion-title>Crear Cuenta</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding">
-  <form [formGroup]="form" (ngSubmit)="submit()">
-    <mat-form-field appearance="fill" style="width:100%">
-      <mat-label>Nombre de usuario</mat-label>
-      <input matInput formControlName="username" placeholder="usuario123" />
-      <mat-error *ngIf="form.get('username')?.hasError('required')">Requerido</mat-error>
-      <mat-error *ngIf="form.get('username')?.hasError('minlength')">Min 3 caracteres</mat-error>
-    </mat-form-field>
-
-    <mat-form-field appearance="fill" style="width:100%">
-      <mat-label>Email</mat-label>
-      <input matInput formControlName="email" placeholder="tu@correo.com" />
-      <mat-error *ngIf="form.get('email')?.hasError('required')">Requerido</mat-error>
-      <mat-error *ngIf="form.get('email')?.hasError('email')">Email inválido</mat-error>
-    </mat-form-field>
-
-    <mat-form-field appearance="fill" style="width:100%">
-      <mat-label>Contraseña</mat-label>
-      <input matInput type="password" formControlName="password" />
-      <mat-error *ngIf="form.get('password')?.hasError('required')">Requerido</mat-error>
-      <mat-error *ngIf="form.get('password')?.hasError('minlength')">Min 6 caracteres</mat-error>
-    </mat-form-field>
-
-    <mat-form-field appearance="fill" style="width:100%">
-      <mat-label>Confirmar contraseña</mat-label>
-      <input matInput type="password" formControlName="confirm" />
-      <mat-error *ngIf="form.get('confirm')?.hasError('required')">Requerido</mat-error>
-      <mat-error *ngIf="form.get('confirm')?.hasError('mismatch')">Las contraseñas no coinciden</mat-error>
-    </mat-form-field>
-
-    <div style="margin-top:16px">
-      <button mat-flat-button color="primary" type="submit">Crear cuenta</button>
+  <div class="register-container">
+    <div class="logo-section">
+      <ion-icon name="person-add" class="logo-icon"></ion-icon>
+      <h1 class="register-title">Únete a SportConnect</h1>
+      <p class="register-subtitle">Completa el formulario para registrarte</p>
     </div>
 
-    <div style="margin-top:12px">
-      <ion-button fill="clear" routerLink="/login">¿Ya tienes cuenta? Inicia sesión</ion-button>
+    <form [formGroup]="form" (ngSubmit)="submit()" class="register-form">
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Nombre de usuario</mat-label>
+        <input matInput formControlName="username" placeholder="usuario123" />
+        <mat-icon matPrefix>person</mat-icon>
+        <mat-error *ngIf="form.get('username')?.hasError('required')">
+          <ion-icon name="alert-circle"></ion-icon> Campo requerido
+        </mat-error>
+        <mat-error *ngIf="form.get('username')?.hasError('minlength')">
+          <ion-icon name="alert-circle"></ion-icon> Mínimo 3 caracteres
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" placeholder="tu@correo.com" />
+        <mat-icon matPrefix>email</mat-icon>
+        <mat-error *ngIf="form.get('email')?.hasError('required')">
+          <ion-icon name="alert-circle"></ion-icon> Campo requerido
+        </mat-error>
+        <mat-error *ngIf="form.get('email')?.hasError('email')">
+          <ion-icon name="alert-circle"></ion-icon> Email inválido
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Contraseña</mat-label>
+        <input matInput type="password" formControlName="password" />
+        <mat-icon matPrefix>lock</mat-icon>
+        <mat-error *ngIf="form.get('password')?.hasError('required')">
+          <ion-icon name="alert-circle"></ion-icon> Campo requerido
+        </mat-error>
+        <mat-error *ngIf="form.get('password')?.hasError('minlength')">
+          <ion-icon name="alert-circle"></ion-icon> Mínimo 6 caracteres
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Confirmar contraseña</mat-label>
+        <input matInput type="password" formControlName="confirm" />
+        <mat-icon matPrefix>lock-closed</mat-icon>
+        <mat-error *ngIf="form.get('confirm')?.hasError('required')">
+          <ion-icon name="alert-circle"></ion-icon> Campo requerido
+        </mat-error>
+        <mat-error *ngIf="form.get('confirm')?.hasError('mismatch')">
+          <ion-icon name="alert-circle"></ion-icon> Las contraseñas no coinciden
+        </mat-error>
+      </mat-form-field>
+
+      <ion-button 
+        expand="block" 
+        color="primary" 
+        type="submit"
+        class="submit-button"
+        [disabled]="!form.valid">
+        <ion-icon slot="start" name="checkmark-circle"></ion-icon>
+        Crear Cuenta
+      </ion-button>
+    </form>
+
+    <div class="login-section">
+      <p class="login-text">¿Ya tienes cuenta?</p>
+      <ion-button fill="clear" color="primary" routerLink="/login" class="login-link">
+        <ion-icon slot="start" name="log-in"></ion-icon>
+        Iniciar Sesión
+      </ion-button>
     </div>
-  </form>
+  </div>
 </ion-content>

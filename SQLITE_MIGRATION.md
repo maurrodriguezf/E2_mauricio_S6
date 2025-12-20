@@ -299,24 +299,3 @@ if (result.values && result.values.length > 0) {
 }
 ```
 
-## ✅ Checklist de Migración
-
-- [x] Instalar dependencias SQLite
-- [x] Crear DatabaseService
-- [x] Migrar AuthService a async/await
-- [x] Actualizar componentes (Login, Register)
-- [x] Actualizar pruebas unitarias
-- [x] Sincronizar con Capacitor
-- [x] Probar en plataforma web
-- [ ] Probar en Android (requiere build)
-- [ ] Probar en iOS (requiere build)
-- [ ] Implementar hash de contraseñas
-- [ ] Migrar otros servicios a SQLite
-
-## 📝 Próximos Pasos
-
-1. **Migrar EventService** a SQLite
-2. **Implementar sincronización offline**
-3. **Agregar índices** para mejor rendimiento
-4. **Implementar migraciones** de esquema
-5. **Agregar backup/restore** de base de datos

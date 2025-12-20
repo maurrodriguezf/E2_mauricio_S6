@@ -3,4 +3,143 @@
   display: block;
 }
 
-mat-form-field { display: block; margin-bottom: 12px; }
+ion-content {
+  --background: linear-gradient(135deg, var(--ion-color-success-tint) 0%, var(--ion-color-light) 100%);
+}
+
+.register-container {
+  max-width: 450px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.logo-section {
+  text-align: center;
+  margin-bottom: 2.5rem;
+  animation: fadeInDown 0.6s ease-out;
+}
+
+.logo-icon {
+  font-size: 70px;
+  color: var(--ion-color-success);
+  margin-bottom: 1rem;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
+}
+
+.register-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--ion-color-success);
+  margin: 0.5rem 0;
+}
+
+.register-subtitle {
+  color: var(--ion-color-medium);
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+.register-form {
+  background: white;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.full-width {
+  width: 100%;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+  color: var(--ion-color-medium);
+}
+
+::ng-deep .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
+  color: var(--ion-color-success);
+}
+
+.submit-button {
+  margin-top: 1.5rem;
+  height: 48px;
+  font-size: 1rem;
+  font-weight: 600;
+  --box-shadow: 0 4px 12px rgba(var(--ion-color-success-rgb), 0.3);
+  
+  &:hover {
+    --box-shadow: 0 6px 16px rgba(var(--ion-color-success-rgb), 0.4);
+  }
+}
+
+.login-section {
+  text-align: center;
+  margin-top: 2rem;
+  animation: fadeIn 0.8s ease-out;
+}
+
+.login-text {
+  color: var(--ion-color-dark);
+  font-size: 0.95rem;
+  margin-bottom: 0.5rem;
+}
+
+.login-link {
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 576px) {
+  .register-container {
+    padding: 1rem;
+  }
+  
+  .register-form {
+    padding: 1.5rem;
+  }
+  
+  .logo-icon {
+    font-size: 55px;
+  }
+  
+  .register-title {
+    font-size: 1.5rem;
+  }
+}

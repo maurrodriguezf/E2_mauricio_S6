@@ -332,31 +332,7 @@ npm run test:headless
 
 ---
 
-## 🎯 Próximos Pasos Recomendados
 
-### Para Producción
-- [ ] **HTTPS**: Configurar certificado SSL/TLS
-- [ ] **Rate Limiting**: Prevenir ataques de fuerza bruta
-- [ ] **Refresh Tokens**: Tokens de larga duración
-- [ ] **Email Verification**: Confirmar emails de registro
-- [ ] **Password Reset**: Recuperación de contraseña
-- [ ] **Database Migration**: PostgreSQL/MySQL en producción
-- [ ] **Logging**: Winston/Pino para logs estructurados
-- [ ] **Monitoring**: Sentry/DataDog para errores
-- [ ] **CI/CD**: GitHub Actions/GitLab CI
-- [ ] **Docker**: Containerización
-
-### Mejoras de Seguridad
-- [ ] **2FA**: Autenticación de dos factores
-- [ ] **OAuth**: Google/Facebook login
-- [ ] **CSRF Protection**: Tokens CSRF
-- [ ] **Helmet.js**: Headers de seguridad
-- [ ] **Input Sanitization**: XSS protection
-- [ ] **Audit Logs**: Registro de acciones
-- [ ] **Password Strength**: zxcvbn validation
-- [ ] **Account Lockout**: Después de N intentos fallidos
-
----
 
 ## 📚 Documentación de Referencia
 

@@ -392,4 +392,3 @@ Ahora tienes:
 - ✅ 78 pruebas unitarias pasando
 - ✅ Documentación completa
 
-**¡Happy coding! 🎉**

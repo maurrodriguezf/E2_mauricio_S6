@@ -1,19 +1,38 @@
-<ion-header translucent>
-  <ion-toolbar>
+<ion-header translucent class="ion-no-border">
+  <ion-toolbar color="primary">
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>Inicio</ion-title>
+    <ion-title>
+      <ion-icon name="home" class="title-icon"></ion-icon>
+      Inicio
+    </ion-title>
     <ion-buttons slot="end">
-      <ion-button routerLink="/profile">Perfil</ion-button>
+      <ion-button routerLink="/profile" fill="clear">
+        <ion-icon slot="icon-only" name="person-circle"></ion-icon>
+      </ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding" [@enter]>
-  <h2>Eventos destacados</h2>
-  <app-card-gallery></app-card-gallery>
+  <div class="welcome-banner">
+    <h2 class="welcome-title">
+      <ion-icon name="trophy"></ion-icon>
+      Eventos Destacados
+    </h2>
+    <p class="welcome-subtitle">Descubre las mejores actividades deportivas</p>
+  </div>
 
-  <h3 class="mt">Próximas</h3>
-  <app-item-list [items]="highlights"></app-item-list>
+  <div class="card-section">
+    <app-card-gallery></app-card-gallery>
+  </div>
+
+  <div class="upcoming-section">
+    <h3 class="section-title">
+      <ion-icon name="calendar"></ion-icon>
+      Próximas Actividades
+    </h3>
+    <app-item-list [items]="highlights"></app-item-list>
+  </div>
 </ion-content>

@@ -1,43 +1,62 @@
 // ***********************************************
-// This example namespace declaration will help
-// with Intellisense and code completion in your
-// IDE or Text Editor.
+// Comandos personalizados para Cypress
 // ***********************************************
-// declare namespace Cypress {
-//   interface Chainable<Subject = any> {
-//     customCommand(param: any): typeof customCommand;
-//   }
-// }
-//
-// function customCommand(param: any): void {
-//   console.warn(param);
-// }
-//
-// NOTE: You can use it like so:
-// Cypress.Commands.add('customCommand', customCommand);
-//
-// ***********************************************
-// This example commands.js shows you how to
-// create various custom commands and overwrite
-// existing commands.
-//
-// For more comprehensive examples of custom
-// commands please read more here:
-// https://on.cypress.io/custom-commands
-// ***********************************************
-//
-//
-// -- This is a parent command --
-// Cypress.Commands.add("login", (email, password) => { ... })
-//
-//
-// -- This is a child command --
-// Cypress.Commands.add("drag", { prevSubject: 'element'}, (subject, options) => { ... })
-//
-//
-// -- This is a dual command --
-// Cypress.Commands.add("dismiss", { prevSubject: 'optional'}, (subject, options) => { ... })
-//
-//
-// -- This will overwrite an existing command --
-// Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
+
+declare global {
+  namespace Cypress {
+    interface Chainable {
+      /**
+       * Comando personalizado para realizar login
+       * @param username - Nombre de usuario
+       * @param password - Contraseña
+       * @example cy.login('testuser', '123456')
+       */
+      login(username: string, password: string): Chainable<void>;
+      
+      /**
+       * Comando personalizado para realizar logout
+       * @example cy.logout()
+       */
+      logout(): Chainable<void>;
+      
+      /**
+       * Comando para verificar que el usuario está autenticado
+       * @example cy.checkAuthenticated()
+       */
+      checkAuthenticated(): Chainable<void>;
+    }
+  }
+}
+
+/**
+ * Comando personalizado para realizar login
+ */
+Cypress.Commands.add('login', (username: string, password: string) => {
+  cy.visit('/login');
+  cy.get('input[formControlName="username"]').clear().type(username);
+  cy.get('input[formControlName="password"]').clear().type(password);
+  cy.get('ion-button[type="submit"]').click();
+  
+  // Esperar a que la navegación se complete
+  cy.url().should('not.include', '/login', { timeout: 10000 });
+});
+
+/**
+ * Comando personalizado para realizar logout
+ */
+Cypress.Commands.add('logout', () => {
+  cy.clearLocalStorage();
+  cy.visit('/login');
+});
+
+/**
+ * Comando para verificar que el usuario está autenticado
+ */
+Cypress.Commands.add('checkAuthenticated', () => {
+  cy.window().then((win) => {
+    const token = win.localStorage.getItem('auth_token');
+    expect(token).to.exist;
+  });
+});
+
+export {};

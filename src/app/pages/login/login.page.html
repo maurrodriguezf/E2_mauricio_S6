@@ -1,32 +1,62 @@
 <ion-header translucent>
-  <ion-toolbar>
+  <ion-toolbar color="primary">
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>SportConnect — Login</ion-title>
+    <ion-title>SportConnect</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true" class="ion-padding" @fadeIn>
-  <form [formGroup]="form" (ngSubmit)="submit()">
-    <mat-form-field appearance="fill" style="width:100%">
-      <mat-label>Usuario</mat-label>
-      <input matInput formControlName="username" placeholder="nombre de usuario">
-      <mat-error *ngIf="form.get('username')?.hasError('required')">Requerido</mat-error>
-      <mat-error *ngIf="form.get('username')?.hasError('minlength')">Min 3 caracteres</mat-error>
-    </mat-form-field>
+  <div class="login-container">
+    <div class="logo-section">
+      <ion-icon name="bicycle" class="logo-icon"></ion-icon>
+      <h1 class="welcome-title">Bienvenido</h1>
+      <p class="welcome-subtitle">Inicia sesión para continuar</p>
+    </div>
 
-    <mat-form-field appearance="fill" style="width:100%">
-      <mat-label>Contraseña</mat-label>
-      <input matInput type="password" formControlName="password" placeholder="mínimo 6 caracteres">
-      <mat-error *ngIf="form.get('password')?.hasError('required')">Requerido</mat-error>
-      <mat-error *ngIf="form.get('password')?.hasError('minlength')">Min 6 caracteres</mat-error>
-    </mat-form-field>
+    <form [formGroup]="form" (ngSubmit)="submit()" class="login-form">
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Usuario</mat-label>
+        <input matInput formControlName="username" placeholder="nombre de usuario">
+        <mat-icon matPrefix>person</mat-icon>
+        <mat-error *ngIf="form.get('username')?.hasError('required')">
+          <ion-icon name="alert-circle"></ion-icon> Campo requerido
+        </mat-error>
+        <mat-error *ngIf="form.get('username')?.hasError('minlength')">
+          <ion-icon name="alert-circle"></ion-icon> Mínimo 3 caracteres
+        </mat-error>
+      </mat-form-field>
 
-    <ion-button expand="block" type="submit" color="primary">Entrar</ion-button>
-  </form>
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Contraseña</mat-label>
+        <input matInput type="password" formControlName="password" placeholder="mínimo 6 caracteres">
+        <mat-icon matPrefix>lock</mat-icon>
+        <mat-error *ngIf="form.get('password')?.hasError('required')">
+          <ion-icon name="alert-circle"></ion-icon> Campo requerido
+        </mat-error>
+        <mat-error *ngIf="form.get('password')?.hasError('minlength')">
+          <ion-icon name="alert-circle"></ion-icon> Mínimo 6 caracteres
+        </mat-error>
+      </mat-form-field>
 
-  <div class="note">
-    <p>¿No tienes cuenta? <a routerLink="/register">Registrarse (demo)</a></p>
+      <ion-button 
+        expand="block" 
+        type="submit" 
+        color="primary" 
+        class="submit-button"
+        [disabled]="!form.valid">
+        <ion-icon slot="start" name="log-in"></ion-icon>
+        Iniciar Sesión
+      </ion-button>
+    </form>
+
+    <div class="register-section">
+      <p class="register-text">¿No tienes cuenta?</p>
+      <ion-button fill="clear" color="primary" routerLink="/register" class="register-link">
+        <ion-icon slot="start" name="person-add"></ion-icon>
+        Registrarse
+      </ion-button>
+    </div>
   </div>
 </ion-content>

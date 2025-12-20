@@ -173,6 +173,6 @@ Las pruebas son estables, rápidas y no causan problemas en VS Code.
 
 ---
 
-**Ejecutado por**: GitHub Copilot  
+ 
 **Comando**: `npm run e2e:headless`  
 **Resultado**: ✅ SUCCESS

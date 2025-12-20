@@ -13,7 +13,14 @@ const PORT = process.env.PORT || 3000;
 
 // Middlewares
 app.use(cors({
-  origin: ['http://localhost:8100', 'http://localhost:4200', 'capacitor://localhost', 'ionic://localhost'],
+  origin: [
+    'http://localhost:8100', 
+    'http://localhost:4200', 
+    'capacitor://localhost', 
+    'ionic://localhost',
+    'http://192.168.0.100:8100',
+    'http://192.168.0.100:4200'
+  ],
   credentials: true
 }));
 app.use(bodyParser.json());
@@ -84,7 +91,7 @@ app.use((err, req, res, next) => {
 // Inicializar base de datos y servidor
 database.connect()
   .then(() => {
-    app.listen(PORT, () => {
+    app.listen(PORT, '0.0.0.0', () => {
       console.log(`
 ╔═══════════════════════════════════════════════╗
 ║                                               ║
@@ -93,10 +100,11 @@ database.connect()
 ║   Server running on port ${PORT}                ║
 ║   Environment: ${process.env.NODE_ENV || 'development'}                  ║
 ║                                               ║
-║   API Docs: http://localhost:${PORT}            ║
-║   Health: http://localhost:${PORT}/api/health   ║
+║   Local: http://localhost:${PORT}               ║
+║   Network: http://192.168.0.100:${PORT}         ║
+║   Health: http://192.168.0.100:${PORT}/api/health ║
 ║                                               ║
-╚═══════════════════════════════════════════════╝
+╚═══════════════════════════════════════════════╗
       `);
     });
   })
